@@ -7,7 +7,8 @@ function App() {
   const [post, setPosts] = useState([]);
   const [showPostComponent, setShowPostComponent] = useState(false);
 
-  const getAllPost = async () => {
+  const getAllPost = async (e) => {
+    e.preventDefault();
     const allPosts = await axios.get(
       "https://whiteboared-401-eyad.herokuapp.com/post"
     );
@@ -16,7 +17,7 @@ function App() {
   };
 
   const addPost = async (e) => {
-    e.preventDEfault();
+    e.preventDefault();
     const postContent = {
       postText: e.target.postText.value,
       commentText: e.target.commentText.value,
