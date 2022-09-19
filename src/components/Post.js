@@ -8,7 +8,7 @@ export default function Post() {
   const [posts, setPosts] = useState([]);
   const [showPostComponent, setShowPostComponent] = useState(false);
 
-  const urlPost = "http://localhost:3000/posts";
+  const urlPost = "https://whiteboared-401-eyad.herokuapp.com/posts";
 
   const getAllPost = async () => {
     axios
