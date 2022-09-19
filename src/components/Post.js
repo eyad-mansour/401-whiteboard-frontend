@@ -27,36 +27,22 @@ export default function Post() {
 
   return (
     <div>
-      <Form>
-        <Form.Group>
-          <Form.Label>Post</Form.Label>
-          <Form.Control type="text" name="postName" />
-        </Form.Group>
+      {/* <form onSubmit={handleSubmit()}> */}
+      <form>
+        <label>post</label>
+        <textarea placeholder="post" />
 
-        <Form.Group>
-          <Form.Label>Comment</Form.Label>
-          <Form.Control type="text" name="commentName" />
-        </Form.Group>
+        <textarea placeholder="comment" />
 
-        <Button variant="outline-dark" type="submit" value="Add Post">
-          Submit
-        </Button>
-
-        <Form.Group>
-          <Form.Label>Post </Form.Label>
-          {showPostComponent &&
-            posts.map((posts, idx) => {
-              return (
-                <div key={idx}>
-                  <p>{posts.postName}</p>
-                  <Form.Group>
-                    <Form.Label>Comment </Form.Label>
-                  </Form.Group>
-                </div>
-              );
-            })}
-        </Form.Group>
-      </Form>
+        {showPostComponent &&
+          posts.map((posts, idx) => {
+            return (
+              <div key={idx}>
+                <p>{posts.postName}</p>
+              </div>
+            );
+          })}
+      </form>
     </div>
   );
 }
