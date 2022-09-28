@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { When } from 'react-if';
-
 // import axios from "axios";
 import Post from './components/Post';
 import SingUp from './components/SignUp';
 import ShowPost from './components/ShowPost';
 import cookies from 'react-cookies';
-import Header from './components/Header';
+import AddPost from './components/Add-post-form';
+import AddComment from './components/Add-comment-form';
 
 function App() {
   const [loggedin, setLoggedin] = useState(false);
@@ -25,14 +25,16 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Header />
+    <div className='App'>
       <When condition={!loggedin}>
         <SingUp setLoggedin={setLoggedin} />
       </When>
       <When condition={loggedin}>
         <button onClick={logOut}>logout</button>
-        <ShowPost />
+        {/* <AddPost />
+        <AddComment />
+        <ShowPost /> */}
+        <Post />
       </When>
     </div>
   );
