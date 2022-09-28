@@ -12,7 +12,7 @@ export default function SingUp(props) {
       password: e.target.password.value,
     };
     await axios
-      .post('http://localhost:3000/signup', data)
+      .post('https://whiteboared-401-eyad.herokuapp.com/signup', data)
       .then((res) => {
         console.log(res);
       })
@@ -30,7 +30,7 @@ export default function SingUp(props) {
     console.log(encodedCredintial);
     await axios
       .post(
-        'http://localhost:3000/login',
+        'https://whiteboared-401-eyad.herokuapp.com/login',
         {},
         {
           headers: {
@@ -51,20 +51,20 @@ export default function SingUp(props) {
     <>
       <div>
         <h2>Sign up</h2>
-        <form action="" onSubmit={handleSignUp}>
-          <input type="text" placeholder="username" name="username" />
-          <input type="email" placeholder="email" name="email" />
-          <input type="text" placeholder="password" name="password" />
-          <button type="submit">Save</button>
+        <form action='' onSubmit={handleSignUp}>
+          <input type='text' placeholder='username' name='username' />
+          <input type='email' placeholder='email' name='email' />
+          <input type='text' placeholder='password' name='password' />
+          <button type='submit'>Save</button>
         </form>
       </div>
 
       <div>
         <h2>Sign in</h2>
-        <form action="" onSubmit={handleSignIn}>
-          <input type="email" placeholder="email" name="email" />
-          <input type="password" placeholder="password" name="password" />
-          <button type="submit">login</button>
+        <form action='' onSubmit={handleSignIn}>
+          <input type='email' placeholder='email' name='email' />
+          <input type='password' placeholder='password' name='password' />
+          <button type='submit'>login</button>
         </form>
       </div>
     </>

@@ -11,16 +11,18 @@ export default function AddPost(props) {
       postName: e.target.postName.value,
       postStatus: e.target.postStatus.value,
     };
-    // console.log(data);
+    console.log(data, 'line 14');
     await axios
       .post(addPostURL, data, {
         headers: {
           Authorization: `Bearer ${cookies.load('token')}`,
         },
       })
-      .then(() => {
+      .then((res) => {
+        console.log('line 22', res.data);
         props.getAllPost();
-      });
+      })
+      .catch((e) => console.log(e));
   };
 
   return (

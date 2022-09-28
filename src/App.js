@@ -31,9 +31,8 @@ function App() {
       </When>
       <When condition={loggedin}>
         <button onClick={logOut}>logout</button>
-        {/* <AddPost />
         <AddComment />
-        <ShowPost /> */}
+        <ShowPost />
         <Post />
       </When>
     </div>
