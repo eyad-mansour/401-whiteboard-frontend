@@ -5,8 +5,6 @@ import Post from './components/Post';
 import SingUp from './components/SignUp';
 import ShowPost from './components/ShowPost';
 import cookies from 'react-cookies';
-import AddPost from './components/Add-post-form';
-import AddComment from './components/Add-comment-form';
 
 function App() {
   const [loggedin, setLoggedin] = useState(false);
@@ -31,9 +29,7 @@ function App() {
       </When>
       <When condition={loggedin}>
         <button onClick={logOut}>logout</button>
-        {/* <AddPost />
-        <AddComment />
-        <ShowPost /> */}
+        <ShowPost />
         <Post />
       </When>
     </div>
