@@ -4,11 +4,13 @@ import cookies from 'react-cookies';
 
 export default function AddComment(props) {
   const addCommentURL = `https://whiteboared-401-eyad.herokuapp.com/comment`;
+  // http://localhost:3000
 
   const addComment = async (e) => {
     e.preventDefault();
     const data = {
       commentName: e.target.commentName.value,
+      commentID: props.commentID,
     };
 
     await axios
@@ -18,7 +20,7 @@ export default function AddComment(props) {
         },
       })
       .then(() => {
-        props.getAllPost();
+        props.getAllComment();
       });
   };
 
@@ -26,7 +28,12 @@ export default function AddComment(props) {
     <>
       <p style={{ backgroundColor: 'black' }}>add comment</p>
       <form onSubmit={addComment}>
-        <input name='commentName' type='text' placeholder='add comment' />
+        <input
+          name='commentName'
+          id='commentName'
+          type='text'
+          placeholder='add comment'
+        />
         <input type='submit' />
       </form>
     </>

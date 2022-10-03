@@ -40,9 +40,13 @@ export default function SingUp(props) {
       )
       .then((res) => {
         console.log(res);
+        cookies.remove();
         cookies.save('token', res.data.token);
         cookies.save('userID', res.data.id);
         cookies.save('userName', res.data.userName);
+        cookies.save('role', res.data.role);
+        // cookies.save('capabilities', JSON.parse(res.data.capabilities));
+
         props.setLoggedin(true);
       })
       .catch((err) => console.log(err));
