@@ -1,33 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import { When } from 'react-if';
 // import axios from "axios";
 import Post from './components/Post';
 import SingUp from './components/SignUp';
 import ShowPost from './components/ShowPost';
-import cookies from 'react-cookies';
+import { authContext } from './context/AuthContext';
 
 function App() {
-  const [loggedin, setLoggedin] = useState(false);
+  const { isAuth, logOut, checkToken } = useContext(authContext);
 
   useEffect(() => {
-    const token = cookies.load('token');
-    // console.log(token);
-    if (token) {
-      setLoggedin(true);
-    }
+    checkToken();
   }, []);
-
-  const logOut = () => {
-    cookies.remove('token');
-    setLoggedin(false);
-  };
 
   return (
     <div className='App'>
-      <When condition={!loggedin}>
-        <SingUp setLoggedin={setLoggedin} />
+      <When condition={!isAuth}>
+        <SingUp />
       </When>
-      <When condition={loggedin}>
+      <When condition={isAuth}>
         <button onClick={logOut}>logout</button>
         <ShowPost />
         <Post />
