@@ -1,11 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import cookies from 'react-cookies';
+import { commentContext } from '';
 
 export default function AddComment(props) {
-  const addCommentURL = `https://whiteboared-401-eyad.herokuapp.com/comment`;
-  // http://localhost:3000
-
   const addComment = async (e) => {
     e.preventDefault();
     const data = {
@@ -14,7 +12,7 @@ export default function AddComment(props) {
     };
 
     await axios
-      .post(addCommentURL, data, {
+      .post(`${process.env.REACT_APP_BACKEND}/comment`, data, {
         headers: {
           Authorization: `Bearer ${cookies.load('token')}`,
         },
