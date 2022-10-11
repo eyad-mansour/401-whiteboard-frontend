@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import cookies from 'react-cookies';
+import { PostContext } from '../context/PostContext';
 
 export default function AddComment(props) {
+  const { getAllPost } = useContext(PostContext);
+
   const addComment = async (e) => {
     e.preventDefault();
     const data = {
@@ -17,7 +20,7 @@ export default function AddComment(props) {
         },
       })
       .then(() => {
-        props.getAllComment();
+        getAllPost();
       });
   };
 
