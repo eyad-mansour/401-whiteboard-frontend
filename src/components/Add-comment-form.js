@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import cookies from 'react-cookies';
-import { commentContext } from '';
 
 export default function AddComment(props) {
   const addComment = async (e) => {
