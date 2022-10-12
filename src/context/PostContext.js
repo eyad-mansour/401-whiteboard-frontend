@@ -25,12 +25,16 @@ const PostContextProvider = (props) => {
       .catch((error) => console.error(`Error: ${error}`));
   };
 
-  const deleteOnePost = async (id) => {
-    await axios.delete(`${process.env.REACT_APP_BACKEND}/post/${id}`, {
-      headers: {
-        Authorization: `Bearer ${cookies.load('token')}`,
-      },
-    });
+  const deleteOnePost = async (post) => {
+    console.log(post, 'helllo');
+    await axios.delete(
+      `${process.env.REACT_APP_BACKEND}/post/${post.id}/${post.userID}`,
+      {
+        headers: {
+          Authorization: `Bearer ${cookies.load('token')}`,
+        },
+      }
+    );
     getAllPost();
   };
 
