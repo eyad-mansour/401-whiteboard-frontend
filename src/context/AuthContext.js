@@ -71,6 +71,17 @@ const AuthContextProvider = (props) => {
     }
   };
 
+  const userAbility = (capabilities, userID) => {
+    if (
+      capabilities.includes('delete') ||
+      parseInt(cookies.load('userID')) === userID
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const value = {
     isAuth,
     logOut,
@@ -80,6 +91,7 @@ const AuthContextProvider = (props) => {
     checkToken,
     role,
     capabilities,
+    userAbility,
   };
 
   return (

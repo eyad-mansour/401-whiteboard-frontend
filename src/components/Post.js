@@ -4,6 +4,7 @@ import AddPost from './Add-post-form';
 import AddComment from './Add-comment-form';
 import { PostContext } from '../context/PostContext';
 import { authContext } from '../context/AuthContext';
+import cookies from 'react-cookies';
 
 export default function Post(props) {
   const {
@@ -14,7 +15,7 @@ export default function Post(props) {
     showPostComponent,
     addPost,
   } = useContext(PostContext);
-  const { role, isAuth, capabilities } = useContext(authContext);
+  const { role, isAuth, capabilities, userAbility } = useContext(authContext);
 
   useEffect(() => {
     // setRole(cookies.load('role'));
@@ -42,24 +43,31 @@ export default function Post(props) {
                 <Card>
                   <Card.Body>
                     <Card.Title>Post: {post.postName}</Card.Title>
-                    {console.log()}
+                    {console.log('hellloooo', post.userID)}
 
-                    {capabilities.includes('delete') && (
-                      <button onClick={() => deleteOnePost(post.id)}>
+                    {userAbility(cookies.load('capabilities'), post.userID) ? (
+                      <button onClick={() => deleteOnePost(post)}>
                         delete
                       </button>
+                    ) : (
+                      <></>
                     )}
                   </Card.Body>
                   <AddComment commentID={post.id} />
-                  {console.log(post + 'line 655555')}
+                  {console.log(post.userID + '  line 655555')}
                   {post.Comments.map((comment, idx) => {
                     return (
                       <div key={idx}>
                         comment: {comment.commentName}
-                        {capabilities.includes('delete') && (
-                          <button onClick={() => deleteOneComment(comment.id)}>
-                            delete {console.log(comment.id)}
+                        {userAbility(
+                          cookies.load('capabilities'),
+                          post.userID
+                        ) ? (
+                          <button onClick={() => deleteOnePost(post)}>
+                            delete
                           </button>
+                        ) : (
+                          <></>
                         )}
                       </div>
                     );
