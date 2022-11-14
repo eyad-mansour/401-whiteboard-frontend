@@ -1,15 +1,20 @@
-import React, { useContext } from 'react';
-import { PostContext } from '../context/PostContext';
+import React, {useContext} from 'react';
+import {PostContext} from '../context/PostContext';
+import {HStack, Input, Button, useToast, Badge, Center} from '@chakra-ui/react';
 
 export default function AddPost() {
-  const { addPost } = useContext(PostContext);
+  const {addPost} = useContext(PostContext);
 
   return (
     <>
-      <p style={{ backgroundColor: 'black' }}>add post</p>
+      <Center>
+        <Badge colorScheme='cyan' p='1' borderRadius='lg'>
+          add post
+        </Badge>
+      </Center>
       <form onSubmit={addPost}>
-        <input name='postName' type='text' placeholder='add post name' />
-        <input type='submit' />
+        <Input name='postName' type='text' placeholder='add post name' />
+        <Input type='submit' />
       </form>
     </>
   );
