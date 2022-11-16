@@ -1,5 +1,5 @@
-import { createContext } from 'react';
-import { useState, useEffect } from 'react';
+import {createContext} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
 import cookies from 'react-cookies';
 
@@ -18,7 +18,6 @@ const PostContextProvider = (props) => {
       })
       .then((response) => {
         const allPosts = response.data;
-        console.log(allPosts);
         setPosts(allPosts);
         setShowPostComponent(true);
       })
@@ -26,7 +25,6 @@ const PostContextProvider = (props) => {
   };
 
   const deleteOnePost = async (post) => {
-    console.log(post, 'helllo');
     await axios.delete(
       `${process.env.REACT_APP_BACKEND}/post/${post.id}/${post.userID}`,
       {
@@ -52,7 +50,6 @@ const PostContextProvider = (props) => {
       postName: e.target.postName.value,
       userID: cookies.load('userID'),
     };
-    console.log(data, 'line 51');
 
     await axios
       .post(`${process.env.REACT_APP_BACKEND}/post`, data, {
@@ -61,7 +58,6 @@ const PostContextProvider = (props) => {
         },
       })
       .then((res) => {
-        console.log('line 60', res.data);
         getAllPost();
       })
       .catch((e) => console.log(e));

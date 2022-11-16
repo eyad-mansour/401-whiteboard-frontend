@@ -1,20 +1,17 @@
 import React, {useContext, useEffect} from 'react';
-import {Card} from 'react-bootstrap';
+// import {Card} from 'react-bootstrap';
 import AddPost from './Add-post-form';
 import AddComment from './Add-comment-form';
 import {PostContext} from '../context/PostContext';
 import {authContext} from '../context/AuthContext';
 import cookies from 'react-cookies';
+import {VStack, HStack, Box, Button, Spacer} from '@chakra-ui/react';
 import {
-  VStack,
-  StackDivider,
-  HStack,
-  Text,
-  Spacer,
-  IconButton,
-  Badge,
-  Box,
-  Button,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Divider,
 } from '@chakra-ui/react';
 
 export default function Post(props) {
@@ -48,11 +45,19 @@ export default function Post(props) {
                   w='100%'
                 >
                   <Card>
-                    <Card.Body>
+                    <CardBody>
                       <VStack>
-                        <Card.Title>Post: {post.postName}</Card.Title>
+                        <CardHeader
+                          // size='4xl'
+                          noOfLines={1}
+                          mb='30'
+                          bgGradient='(warning.100)'
+                          bgClip='text'
+                          bgColor='blue.500'
+                        >
+                          {post.postName}
+                        </CardHeader>
                       </VStack>
-                      {console.log('hellloooo', post.userID)}
 
                       {userAbility(
                         cookies.load('capabilities'),
@@ -70,14 +75,15 @@ export default function Post(props) {
                       ) : (
                         <></>
                       )}
-                    </Card.Body>
+                    </CardBody>
+
                     <AddComment commentID={post.id} />
-                    {console.log(post.userID + '  line 655555')}
+
                     {post.Comments.map((comment, idx) => {
                       return (
                         <VStack p='2em'>
                           <div key={idx}>
-                            comment: {comment.commentName}
+                            {comment.commentName}
                             {userAbility(
                               cookies.load('capabilities'),
                               post.userID
@@ -93,6 +99,7 @@ export default function Post(props) {
                               <></>
                             )}
                           </div>
+                          <Divider />
                         </VStack>
                       );
                     })}

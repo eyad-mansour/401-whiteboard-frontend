@@ -5,7 +5,7 @@ import Post from './components/Post';
 import SingUp from './components/SignUp';
 import ShowPost from './components/ShowPost';
 import {authContext} from './context/AuthContext';
-import {Button, Flex, Spacer, Box} from '@chakra-ui/react';
+import {Button, Flex, Spacer, Box, useColorMode} from '@chakra-ui/react';
 
 function App() {
   const {isAuth, logOut, checkToken} = useContext(authContext);
@@ -21,7 +21,7 @@ function App() {
       </When>
       <When condition={isAuth}>
         <Box>
-          <Button m='2em' mt='2em' colorScheme='blue' onClick={logOut}>
+          <Button variant={['sm', 'md', 'lg']} px='8' onClick={logOut}>
             logout
           </Button>
         </Box>

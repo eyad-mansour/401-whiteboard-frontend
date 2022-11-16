@@ -1,13 +1,23 @@
 import React, {useContext} from 'react';
 import {authContext} from '../context/AuthContext';
-import {chakra, Flex, Heading, VStack, Input} from '@chakra-ui/react';
+import {chakra, Flex, Heading, VStack, Input, Center} from '@chakra-ui/react';
 
 export default function SingUp() {
   const {handleSignIn, handleSignUp} = useContext(authContext);
+
   return (
     <Flex height='100vh' alignItems='center' justifyContent='center'>
       <VStack>
-        <Heading>create new account</Heading>
+        <Heading
+          as='h1'
+          noOfLines={1}
+          mb='30'
+          bgGradient='linear(to-r, primary.400, primary.100, warning.100)'
+          bgClip='text'
+          textStyle='h1'
+        >
+          create new account
+        </Heading>
         <form action='' onSubmit={handleSignUp}>
           <VStack
             borderWidth='2px'
@@ -33,7 +43,16 @@ export default function SingUp() {
           </VStack>
         </form>
 
-        <Heading>log in</Heading>
+        <Heading
+          as='h1'
+          noOfLines={1}
+          mb='30'
+          bgGradient='linear(to-r, primary.400, primary.100, warning.100)'
+          bgClip='text'
+          textStyle='h1'
+        >
+          log in
+        </Heading>
         <Flex borderWidth='2px' borderRadius='lg' padding='4'>
           <form action='' onSubmit={handleSignIn}>
             <VStack>

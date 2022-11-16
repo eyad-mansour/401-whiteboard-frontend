@@ -13,7 +13,7 @@ export default function AddPost() {
         </Badge>
       </Center>
       <form onSubmit={addPost}>
-        <Input name='postName' type='text' placeholder='add post name' />
+        <Input name='postName' type='text' placeholder='add post..' />
         <Input type='submit' />
       </form>
     </>
