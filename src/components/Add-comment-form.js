@@ -35,7 +35,7 @@ export default function AddComment(props) {
           name='commentName'
           id='commentName'
           type='text'
-          placeholder='add comment'
+          placeholder='add comment...'
         />
         <Input type='submit' />
       </form>

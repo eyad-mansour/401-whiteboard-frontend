@@ -5,14 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthContextProvider from './context/AuthContext';
 import PostContextProvider from './context/PostContext';
-import {ChakraProvider} from '@chakra-ui/react';
+import {ChakraProvider, extendTheme, ColorModeScript} from '@chakra-ui/react';
+import {myNewTheme} from './theme/index';
+
+const theme = extendTheme();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
       <PostContextProvider>
-        <ChakraProvider>
+        <ChakraProvider theme={myNewTheme}>
           <App />
         </ChakraProvider>
       </PostContextProvider>
